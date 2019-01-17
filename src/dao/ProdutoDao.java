@@ -55,18 +55,16 @@ public class ProdutoDao {
 		}
 	}
 	
-	public void Atualiza(Produto produto) {
-		String sql = "UPDATE produto SET descricao = ?, preco = ? WHERE codigo_produto = ?";
+	public void Deleta(Produto produto) {
+		String sql = "DELETE from produto WHERE codigo_produto = ?";
 		PreparedStatement stmt = null;
 		
 		try {
 			stmt = conexao.prepareStatement(sql);
-			stmt.setString(1, produto.getDescricao());
-			stmt.setDouble(2, produto.getPreco());
-			stmt.setInt(3, produto.getCodigo_produto());
+			stmt.setInt(1, produto.getCodigo_produto());
 			stmt.execute();
 		}catch (Exception erro) {
-			throw new RuntimeException("Erro ao tentar atualizar produto " + erro.getMessage());
+			throw new RuntimeException("Erro ao tentar deletar produto " + erro.getMessage());
 		}finally {
 			try {
 				stmt.close();
