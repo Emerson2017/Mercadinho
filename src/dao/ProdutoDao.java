@@ -4,10 +4,16 @@ import model.Produto;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import dao.ConnectionFactory;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+
 
 public class ProdutoDao {
 
-	Connection conexao;
+	private Connection conexao;
+	private PreparedStatement stmt = null;
+	private ArrayList<Produto> listaProdutos = new ArrayList<>();
+	private ResultSet rs;
 	
 	public ProdutoDao(){
 		this.conexao = new ConnectionFactory().getConnection();
@@ -16,7 +22,6 @@ public class ProdutoDao {
 	
 	public void Adiciona(Produto produto) {
 		String sql = "INSERT INTO produto (descricao, preco) values (?,?)";
-		PreparedStatement stmt = null;
 		
 		try {
 			stmt = conexao.prepareStatement(sql);
@@ -36,7 +41,6 @@ public class ProdutoDao {
 	
 	public void Atualiza(Produto produto) {
 		String sql = "UPDATE produto SET descricao = ?, preco = ? WHERE codigo_produto = ?";
-		PreparedStatement stmt = null;
 		
 		try {
 			stmt = conexao.prepareStatement(sql);
@@ -57,7 +61,6 @@ public class ProdutoDao {
 	
 	public void Deleta(Produto produto) {
 		String sql = "DELETE from produto WHERE codigo_produto = ?";
-		PreparedStatement stmt = null;
 		
 		try {
 			stmt = conexao.prepareStatement(sql);
@@ -73,5 +76,60 @@ public class ProdutoDao {
 			}
 		}
 	}
+	
+	
+	public ArrayList<Produto> listarProdutos(){
+		String sql = "SELECT * FROM produto";
+		
+		try {
+			stmt = conexao.prepareStatement(sql);
+			rs = stmt.executeQuery();
+			
+			while(rs.next()) {
+				Produto produto = new Produto();
+				produto.setCodigo_produto(rs.getInt("codigo_produto"));
+				produto.setDescricao(rs.getString("descricao"));
+				produto.setPreco(rs.getDouble("preco"));
+				listaProdutos.add(produto);
+			}
+			
+			return listaProdutos;
+			
+		}catch (Exception erro) {
+			throw new RuntimeException("Erro ao pegar todos os produtos: "+erro);
+		}
+	}
+	
+	public ArrayList<Produto> listarProdutosPorDescricao(String descricao){
+		String sql = "SELECT * FROM produto WHERE descricao LIKE '%"+descricao+"%' ";
+		
+		try {
+			stmt = conexao.prepareStatement(sql);
+			stmt.setString(1, descricao);
+			rs = stmt.executeQuery();
+			
+			while(rs.next()) {
+				Produto produto = new Produto();
+				produto.setCodigo_produto(rs.getInt("codigo_produto"));
+				produto.setDescricao(rs.getString("descricao"));
+				produto.setPreco(rs.getDouble("preco"));
+				listaProdutos.add(produto);
+			}
+			
+			return listaProdutos;
+			
+		}catch (Exception erro) {
+			throw new RuntimeException("Erro ao pegar todos os produtos: "+erro);
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }
