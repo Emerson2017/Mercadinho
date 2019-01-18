@@ -20,7 +20,7 @@
 				}
 				
 				produtoDao.Deleta(Integer.parseInt(request.getParameter("codigo")));
-				response.sendRedirect("index.jsp");
+				response.sendRedirect("index.jsp");	
 				
 			}catch(Exception erro){
 				throw new RuntimeException(erro.getMessage());

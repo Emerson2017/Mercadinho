@@ -59,12 +59,11 @@ public class ProdutoDao {
 		}
 	}
 	
-	public void Deleta(Produto produto) {
-		String sql = "DELETE from produto WHERE codigo_produto = ?";
+	public void Deleta(int codigo) {
+		String sql = "DELETE from produto WHERE codigo_produto = "+codigo;
 		
 		try {
 			stmt = conexao.prepareStatement(sql);
-			stmt.setInt(1, produto.getCodigo_produto());
 			stmt.execute();
 		}catch (Exception erro) {
 			throw new RuntimeException("Erro ao tentar deletar produto " + erro.getMessage());
