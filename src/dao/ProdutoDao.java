@@ -104,7 +104,6 @@ public class ProdutoDao {
 		
 		try {
 			stmt = conexao.prepareStatement(sql);
-			stmt.setString(1, descricao);
 			rs = stmt.executeQuery();
 			
 			while(rs.next()) {
