@@ -6,62 +6,29 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+		<link href="css/Style.css" rel="stylesheet" type="text/css">
 		<meta charset="UTF-8">
 		<title>PÁGINA PRINCIPAL</title>
 	</head>
 
 	<body>
-		<style>
-			html{
-				width: 100%;
-				height: 100%;
-			}
-		
-			body{
-				height: 100%;
-				margin: 0 !important;
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				flex-direction: column;
-			}
-			
-			table{
-				margin-top: 50px;
-			}
-		
-			form{
-				display: flex;
-				flex-direction: column;
-				width: 20%;
-				justify-content: center !important;
-				align-items: center;				
-			}
-			
-			input, label{
-				margin-top: 10px;
-			}
-			
-			input[type="submit"]{
-				width: 50%;
-			}
-		</style>
 		
 		<h1>Gerenciamento de Produtos</h1>
 	
 		<form action="index.jsp" method="post">
-			<label>Descrição: </label></br>
-			
-			<input type="text" name="descricao"></br>
-			
-			<input type="submit" value="OK">
+			<div class="inputs-rows">	
+				<label>Pesquisar por Descrição: </label> 
+				<input type="text" name="descricao">
+				<input type="submit" value="Pesquisar" class="btn btn-success">
+			</div>
 		</form>
 		
 				<%
 			try{
 				ProdutoDao produtoDao = new ProdutoDao();
 				
-				out.print("<table>");
+				out.print("<table class='table table-striped'>");
 				
 				out.print("<tr>");
 				out.print("<th>Código do Produto</th>");
@@ -114,8 +81,10 @@
 		%>
 		
 
-		<nr><a href="inserir.jsp">NOVO PRODUTO</a>
+		<br><a href="inserir.jsp" class="btn btn-primary">NOVO PRODUTO</a>
 
-		
+	<!-- imports js -->
+	<script type="text/javascript" src="js/bootstrap.js"></script>
+	<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>	
 	</body>
 </html>
