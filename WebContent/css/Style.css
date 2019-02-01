@@ -14,22 +14,29 @@ body{
 }
 
 table{
-	margin-top: 200px;
+	/*margin-top: 200px;*/
 	width: 60%;
 }
 
 form{
 	display: flex;
-	flex-direction: column;
 	width: auto;
-	justify-content: center !important;
-	align-items: center;				
+	margin-left: auto;
+}
+
+.table-products{
+	margin-top: 20px;
+}
+
+.full-content{
+	margin-top: 80px;
 }
 
 .inputs-rows{
 	display: flex;
 	flex-direction: row !important;
 	align-items: center;
+	width: auto !important;
 }
 
 .inputs-rows input{
@@ -46,4 +53,11 @@ input[type="submit"]{
 
 h1{
 	margin-top: 40px;
+}
+
+
+.content-inputs{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
 }

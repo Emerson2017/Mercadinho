@@ -15,21 +15,26 @@
 	<body>
 		
 		<h1>Gerenciamento de Produtos</h1>
-	
-		<form action="index.jsp" method="post">
-			<div class="inputs-rows">	
-				<label>Pesquisar por Descrição: </label> 
-				<input type="text" name="descricao">
-				<input type="submit" value="Pesquisar" class="btn btn-success">
+
+		<div class="container full-content">
+			<div class="content-inputs">
+				<a href="inserir.jsp" class="btn btn-primary">NOVO PRODUTO</a>
+
+				<form action="index.jsp" method="post">
+					<div class="inputs-rows">
+						<label>Pesquisar por Descrição: </label>
+						<input type="text" name="descricao">
+						<input type="submit" value="Pesquisar" class="btn btn-success">
+					</div>
+				</form>
 			</div>
-		</form>
 		
-				<%
+		<%
 			try{
 				ProdutoDao produtoDao = new ProdutoDao();
 				
-				out.print("<table class='table table-striped'>");
-				
+
+				out.print("<table class='table table-striped table-products'>");
 				out.print("<tr>");
 				out.print("<th>Código do Produto</th>");
 				out.print("<th>Descrição do Produto</th>");
@@ -74,14 +79,12 @@
 				
 				out.print("</table>");
 				
-				
 			}catch(Exception erro){
 				throw new RuntimeException(erro.getMessage());
 			}
 		%>
+		</div>
 		
-
-		<br><a href="inserir.jsp" class="btn btn-primary">NOVO PRODUTO</a>
 
 	<!-- imports js -->
 	<script type="text/javascript" src="js/bootstrap.js"></script>
