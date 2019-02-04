@@ -8,6 +8,7 @@
 	<head>
 		<link href="css/bootstrap.css" rel="stylesheet" type="text/css">
 		<link href="css/Style.css" rel="stylesheet" type="text/css">
+		<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
 		<meta charset="UTF-8">
 		<title>PÁGINA PRINCIPAL</title>
 	</head>
@@ -20,7 +21,7 @@
 			<div class="content-inputs">
 				<a href="inserir.jsp" class="btn btn-primary">NOVO PRODUTO</a>
 
-				<form action="index.jsp" method="post">
+				<form action="index.jsp" method="post" class="search">
 					<div class="inputs-rows">
 						<label>Pesquisar por Descrição: </label>
 						<input type="text" name="descricao">
@@ -51,8 +52,8 @@
 						out.print("<td>"+lista.get(num).getCodigo_produto()+"</td>");
 						out.print("<td>"+lista.get(num).getDescricao()+"</td>");
 						out.print("<td>"+lista.get(num).getPreco()+"</td>");
-						out.print("<td><a href='alterar.jsp?codigo="+lista.get(num).getCodigo_produto()+"&descricao="+lista.get(num).getDescricao()+"&preco="+lista.get(num).getPreco()+"'>update</a></td>");
-						out.print("<td><a href='excluir.jsp?codigo="+lista.get(num).getCodigo_produto()+"&descricao="+lista.get(num).getDescricao()+"&preco="+lista.get(num).getPreco()+"'>excluir</a></td>");
+						out.print("<td><a href='alterar.jsp?codigo="+lista.get(num).getCodigo_produto()+"&descricao="+lista.get(num).getDescricao()+"&preco="+lista.get(num).getPreco()+"'>Editar</a></td>");
+						out.print("<td><a href='excluir.jsp?codigo="+lista.get(num).getCodigo_produto()+"&descricao="+lista.get(num).getDescricao()+"&preco="+lista.get(num).getPreco()+"'>Excluir</a></td>");
 						out.print("</tr>");
 					}
 				}
