@@ -9,14 +9,17 @@ import java.util.ArrayList;
 
 
 public class ProdutoDao {
-
+	
+	// atributos 
 	private Connection conexao;
-	private PreparedStatement stmt = null;
+	private PreparedStatement stmt = null; // PreparedStatement is a Interface;
 	private ArrayList<Produto> listaProdutos = new ArrayList<>();
 	private ResultSet rs;
 	
+	
 	public ProdutoDao(){
-		this.conexao = new ConnectionFactory().getConnection();
+		//The connection with DataBase is initialized in the instance of class
+		this.conexao = new ConnectionFactory().getConnection(); // atributo do tipo connection que recebe o retorno da conexão
 	}
 	
 	
