@@ -1,2 +1,2 @@
 # CRUD-JAVA-WEB
-A simple CRUD web using JAVA + JSP &lt;3 
+A simple CRUD web using JAVA + JSP
